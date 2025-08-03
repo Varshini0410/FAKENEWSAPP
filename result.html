@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Prediction Result</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            text-align: center; 
+            padding: 50px; 
+            background-color: #f8f9fa;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            display: inline-block;
+        }
+        h1 { color: #333; }
+        .real { color: green; }
+        .fake { color: red; }
+        .confidence { font-size: 18px; margin: 15px 0; }
+        .suspicious { color: red; font-weight: bold; }
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            padding: 10px 20px;
+            background: #007bff;
+            color: white;
+            border-radius: 8px;
+        }
+        .back-btn:hover { background: #0056b3; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📰 Prediction Result</h1>
+        <h2 class="{{ 'real' if 'Real' in prediction else 'fake' }}">
+            {{ prediction }}
+        </h2>
+        <p class="confidence"><b>Confidence:</b> {{ confidence }}</p>
+
+        <p><b>Suspicious Words:</b> 
+            {% for word in words %}
+                <span class="suspicious">{{ word }}</span>{% if not loop.last %}, {% endif %}
+            {% endfor %}
+        </p>
+
+        {% if extracted_text %}
+        <p><b>Extracted Text:</b><br> {{ extracted_text }}</p>
+        {% endif %}
+
+        <a class="back-btn" href="/">← Back to Home</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fake News Detector</title>
+    <style>
+        body { font-family: Arial; text-align: center; padding: 50px; }
+        textarea { width: 400px; height: 150px; }
+        input { margin: 10px; }
+        button { padding: 10px 20px; }
+    </style>
+</head>
+<body>
+    <h1>📰 Fake News Detector</h1>
+    <form action="/predict" method="post" enctype="multipart/form-data">
+        <textarea name="news" placeholder="Enter news content here..."></textarea><br>
+        <input type="file" name="news_image"><br>
+        <button type="submit">Check News</button>
+    </form>
+</body>
+</html>
